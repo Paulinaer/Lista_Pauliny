@@ -151,6 +151,130 @@ select * from paczki_oceny;
 select miejsce, typ, ocena from paczki_oceny
 where miejsce ='Chrupki król' and ocena >=10 or typ ='z dżemem' ;
 
+select lokalizacja from moje_kontakty
+where lokalizacja like '%wa';
+
+select * from proste_drinki ;
+
+
+select nazwa, wskazowki, from proste_drinki
+where ilosc1 between 45 and 60;
+
+
+select * from moje_kontakty;
+
+
+select imie, lokalizacja, zawod from moje_kontakty mk 
+where zawod ='Radca prawny' or zawod='Studentka' or zawod='spawacz';
+
+
+select imie from moje_kontakty
+where imie like '%na';
+
+use paulina;
+
+
+
+select * from moje_kontakty mk ;
+
+select imie from moje_kontakty mk 
+where szuka in ('przyjaciół', 'związków','zabawy');
+
+
+select imie from moje_kontakty mk 
+where not imie like '%a' and not imie like '%t';
+
+create table klowni_informacje
+(imie varchar (25) not null,
+ostatnio_widziano varchar (150) not null,
+wyglad varchar (150) not null,
+aktywności varchar (150) not null
+);
+
+select * from klowni_informacje mk ;
+
+insert into klowni_informacje
+values
+('Zippo','Centrum Handlowe Skarbiec','K, pomarańczowy garnitur, workowate spodnie','taniec, śpiew'),
+('Pani Smyk','Zabawex','K, żółta koszula, workowate, niebieskie spodnie','trąbka, parasolka'),
+('Gonzo','Park Zielona Polana','M, w przebraniu kobiety, kostium w plamki','śpiew, taniec'),
+('Pan Smyk','Przyjęcie urodzinowe w Mc\'Stecku','M, zielono-fioletowy kostium','wchodzenie do małego samochodu'),
+('Pan Hobo','Przyjęcie u Eryka Szarzyńskiego','M, cygaro, czarne włosy, malutki kapelusz','skrzypce');
+
+delete from klowni_informacje 
+where aktywności='taniec';
+
+insert into klowni_informacje
+values
+('Pan Smyk','Przyjęcie urodzinowe w Mc\'Stecku','M, zielono-fioletowy kostium','wchodzenie do małego samochodu');
+
+select * from proste_drinki pd ;
+
+update proste_drinki 
+set 
+skladnik_glowny ='sok z czarnego bzu' 
+where 
+nazwa ='Blue Moon'; 
+
+select * from klowni_informacje mk ;
+
+update klowni_informacje 
+set ostatnio_widziano ='Szpital MIejski'
+where imie='Pan Hobo'  ;
+
+
+select * from proste_drinki pd ;
+
+update proste_drinki 
+set ilosc1 = ilosc1+10
+where 
+nazwa='lime Fizz' or
+nazwa ='Oh My Gosh';
+
+
+select * from klowni_informacje mk ;
+
+desc moje_kontakty ;
+
+show create table moje_kontakty ;
+
+alter table moje_kontakty 
+add column id_kontaktu int not null auto_increment first,
+add primary key (id_kontaktu);
+
+alter table moje_kontakty 
+add column telefon varchar (10)
+after imie;
+
+alter table moje_kontakty 
+drop column telefon;
+
+select * from moje_kontakty mk ;
+
+insert into moje_kontakty 
+(id_kontaktu, nazwisko, imie, email ,plec, data_urodzenia, zawod, lokalizacja, wojewodztwo, zainteresowania, szuka)
+values 
+(37,'Starczewska','Anna','starczewska.anna@onet.pl','K','1991-09-12','nauczyciel','Żnin','Kujawsko-Pomorskie','planszówki, bieganie','zabawy, znajmoych');
+
+insert into moje_kontakty 
+(id_kontaktu, nazwisko, imie, email ,plec, data_urodzenia, zawod, lokalizacja, wojewodztwo, zainteresowania, szuka)
+values 
+(69,'Starczewska','Anna','starczewska.anna@onet.pl','K','1991-09-12','nauczyciel','Żnin','Kujawsko-Pomorskie','planszówki, bieganie','zabawy, znajmoych');
+
+
+update moje_kontakty 
+set id_kontaktu=38 where id_kontaktu ='69';
+
+delete from moje_kontakty 
+where id_kontaktu='38';
+
+
+
+
+
+
+
+
 
 
 
